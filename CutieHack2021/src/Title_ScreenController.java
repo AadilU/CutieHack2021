@@ -1,4 +1,4 @@
 
-public class PleaseProvideControllerClassName {
+public class Title_ScreenController {
 
 }

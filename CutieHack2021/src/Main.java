@@ -1,4 +1,6 @@
 import java.io.IOException;
+import java.util.ArrayList;
+
 import org.json.simple.JSONValue;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -7,6 +9,7 @@ import org.json.simple.JSONObject;
 
 public class Main {
 	public static void main(String args[]) throws IOException, InterruptedException, ParseException{
+		ArrayList<String> platformNames = new ArrayList();
 		Movie test = new Movie(); 
 		test.settingUserMovie();
 		parse1(test.response.body());
