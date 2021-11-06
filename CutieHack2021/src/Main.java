@@ -8,6 +8,9 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 public class Main {
+	
+	public static ArrayList<MovieEntry> movies = new ArrayList<MovieEntry>();
+	
 	public static void main(String args[]) throws IOException, InterruptedException, ParseException{
 		Movie test = new Movie(); 
 		test.settingUserMovie();
@@ -50,6 +53,7 @@ public class Main {
 					}
 					addMovie = new MovieEntry(movieName, movieStream, movieIcon);
 					movieStream.clear();
+					movies.add(addMovie);
 			}
 		}
 	}
