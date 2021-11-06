@@ -15,13 +15,22 @@ public class Main {
 	}
 	
 	//Parse per 1 search
-	public static void parse1(String body) throws ParseException {
+	public static void parse1(String body) throws ParseException{
 		JSONParser parser = new JSONParser();
 		Object o = parser.parse(body);
 		JSONObject jObject = (JSONObject)o;
-		JSONArray jArray = (JSONArray) jObject.get("results");
+		JSONArray jArray = null;
+		try
+		{
+		jArray = (JSONArray) jObject.get("results");
+		}
+		catch(ClassCastException e) {
+			MovieEntry blankEntry = new MovieEntry("", new ArrayList(), "");
+			return;
+		}
 		
 		String movieName = "";
+		String movieIcon = "";
 		ArrayList<String> movieStream = new ArrayList();
 		
 		for(int i = 0;i < jArray.size();i++) {
@@ -30,14 +39,16 @@ public class Main {
 				JSONObject jObject1 = (JSONObject) jArray.get(i);
 				
 				movieName = (String) jObject1.get("name");
+				movieIcon = (String) jObject1.get("picture");
 				
 				JSONArray jArray2 = (JSONArray) jObject1.get("locations");
 					for(Object n:jArray2) {
 						JSONObject jObject3 = (JSONObject)n;
 						String name = (String) jObject3.get("display_name");
-						movieStream.add(name);
+						String url = (String) jObject3.get("url");
+						movieStream.add(name + ": " + url);
 					}
-					addMovie = new MovieEntry(movieName, movieStream);
+					addMovie = new MovieEntry(movieName, movieStream, movieIcon);
 					movieStream.clear();
 			}
 		}

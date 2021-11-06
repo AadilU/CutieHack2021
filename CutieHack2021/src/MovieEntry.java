@@ -5,7 +5,7 @@ public class MovieEntry {
 	String movieName;
 	ArrayList<String> services;
 	
-	MovieEntry(String name, ArrayList<String> streamList) {
+	MovieEntry(String name, ArrayList<String> streamList, String icon) {
 		movieName = name;
 		services = streamList;
 		
@@ -13,6 +13,7 @@ public class MovieEntry {
 		for(int i = 0;i < streamList.size();i++) {
 			System.out.println(streamList.get(i));
 		}
+		System.out.println(icon);
 		System.out.println("\n");
 	}
 	
