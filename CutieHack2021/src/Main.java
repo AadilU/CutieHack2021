@@ -18,10 +18,14 @@ public class Main {
 		JSONObject jObject = (JSONObject)o;
 		JSONArray jArray = (JSONArray) jObject.get("results");
 		
-		for(Object n:jArray) {
-			JSONObject jNum = (JSONObject) n;
-			String num = (String) jNum.get("id");
-			System.out.println(num);
+		for(int i = 0;i < jArray.size();i++) {
+				JSONObject jObject1 = (JSONObject) jArray.get(i);
+				JSONArray jArray2 = (JSONArray) jObject1.get("locations");
+					for(Object n:jArray2) {
+						JSONObject jObject3 = (JSONObject)n;
+						String name = (String) jObject3.get("display_name");
+						System.out.println(name);
+					}
+			}
 		}
 	}
-}
