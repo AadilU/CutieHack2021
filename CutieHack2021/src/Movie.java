@@ -25,7 +25,7 @@ public class Movie {
 			length = user_m.length();
 		}
 		request = HttpRequest.newBuilder()
-				.uri(URI.create("https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup?term=Attack%20on%20Titan&country=us"))
+				.uri(URI.create("https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup?term=" + user_m + "&country=us"))
 				.header("x-rapidapi-host", "utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com")
 				.header("x-rapidapi-key", "99733d641cmshb68877f62552883p18b4a8jsna783d2c52835")
 				.method("GET", HttpRequest.BodyPublishers.noBody())
