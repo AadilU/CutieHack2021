@@ -11,14 +11,14 @@ public class Main {
 	
 	public static ArrayList<MovieEntry> movies = new ArrayList<MovieEntry>();
 	
-	public static void main(String args[]) throws IOException, InterruptedException, ParseException{
+	public ArrayList<MovieEntry> main(String args) throws IOException, InterruptedException, ParseException{
 		Movie test = new Movie(); 
-		test.settingUserMovie();
-		parse1(test.response.body());
+		test.setUserMovie(args);
+		return parse1(test.response.body());
 	}
 	
 	//Parse per 1 search
-	public static void parse1(String body) throws ParseException{
+	public static ArrayList<MovieEntry> parse1(String body) throws ParseException {
 		JSONParser parser = new JSONParser();
 		Object o = parser.parse(body);
 		JSONObject jObject = (JSONObject)o;
@@ -28,8 +28,8 @@ public class Main {
 		jArray = (JSONArray) jObject.get("results");
 		}
 		catch(ClassCastException e) {
-			MovieEntry blankEntry = new MovieEntry("", new ArrayList(), "");
-			return;
+			MovieEntry blankEntry = new MovieEntry("", new ArrayList<String>(), "");
+			return null;
 		}
 		
 		String movieName = "";
@@ -52,8 +52,9 @@ public class Main {
 						movieStream.add(name + ": " + url);
 					}
 					addMovie = new MovieEntry(movieName, movieStream, movieIcon);
-					movieStream.clear();
+					//movieStream.clear();
 					movies.add(addMovie);
 			}
+		return movies;
 		}
 	}
