@@ -52,8 +52,8 @@ public class Main {
 						movieStream.add(name + ": " + url);
 					}
 					addMovie = new MovieEntry(movieName, movieStream, movieIcon);
-					//movieStream.clear();
 					movies.add(addMovie);
+					movieStream.clear();
 			}
 		return movies;
 		}
