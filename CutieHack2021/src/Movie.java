@@ -8,24 +8,24 @@ public class Movie {
 	String user_m;
 	HttpRequest request;
 	HttpResponse<String> response;
-	public void settingUserMovie() throws IOException, InterruptedException //method for inputting user-inputted Movie or TV Show into API without needing a paramater
-	{
+	public void settingUserMovie() throws IOException, InterruptedException 
+	{ //method for inputting user-inputted Movie or TV Show into API without needing a paramater
 		Scanner sc= new Scanner(System.in);
-		System.out.println("Enter in the movie or TV Show you would like to search");
+		System.out.println("Enter in the Movie or TV Show you would like to search");
 		user_m = sc.nextLine(); 
 		setUserApi();
 	}
-	public void setUserMovie(String Program_s) throws IOException, InterruptedException //method for inputting user-inputted Movie or TV Show into API with paramater
-	{ 
+	public void setUserMovie(String Program_s) throws IOException, InterruptedException 
+	{ //method for inputting user-inputted Movie or TV Show into API with paramater
 		user_m = Program_s;
 		setUserApi();
 	}
 	public String getUserMovie() 
-	{ 
+	{ //method for returning the user's Movie or TV Show
 		return user_m;
 	}
-	private void setUserApi() throws IOException, InterruptedException //method for inputting user-inputted Movie or Tv Show into API
-	{ 
+	private void setUserApi() throws IOException, InterruptedException 
+	{ //method for inputting user-inputted Movie or Tv Show into API
 		int temp, length = user_m.length();
 		while (user_m.contains(" "))
 		{ 
